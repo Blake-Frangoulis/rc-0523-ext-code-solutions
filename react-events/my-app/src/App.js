@@ -3,11 +3,26 @@ import './App.css';
 import CustomButton from './CustomButton';
 
 function App() {
+  function handleCustomClick(text) {
+    alert(text);
+  }
   return (
     <div>
-      <CustomButton text={'one'} color={'red'} />
-      <CustomButton text={'two'} color={'blue'} />
-      <CustomButton text={'three'} color={'green'} />
+      <CustomButton
+        text={'one'}
+        color={'red'}
+        onCustomClick={handleCustomClick}
+      />
+      <CustomButton
+        text={'two'}
+        color={'blue'}
+        onCustomClick={handleCustomClick}
+      />
+      <CustomButton
+        text={'three'}
+        color={'green'}
+        onCustomClick={handleCustomClick}
+      />
     </div>
   );
 }
