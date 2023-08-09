@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 export default function RotatingBanner({ items }) {
+  const current = 0;
   function Banner({ item }) {
     return (
       <div>
@@ -13,14 +16,17 @@ export default function RotatingBanner({ items }) {
       </div>
     );
   }
-  function Indicators({ count }) {
-    return (
-      <div>
-        {items.map((item, index) => (
-          <button>{index + 1}</button>
-        ))}
-      </div>
-    );
+  function Indicators({ count, currentIndex }) {
+    let buttons = [];
+    for (let i = 0; i < count; i++) {
+      buttons.push(
+        <button
+          style={{ backgroundColor: currentIndex === i ? 'lightblue' : '' }}>
+          {i}
+        </button>
+      );
+    }
+    return <div>{buttons}</div>;
   }
   function NextButton() {
     return (
@@ -33,7 +39,7 @@ export default function RotatingBanner({ items }) {
     <div>
       <Banner item={items[0]} />
       <PrevButton />
-      <Indicators count={items.length} />
+      <Indicators count={items.length} currentIndex={current} />
       <NextButton />
     </div>
   );
